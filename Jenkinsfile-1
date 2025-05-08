@@ -25,7 +25,7 @@ pipeline {
         }
         stage('build image') {
             steps {
-                sh 'docker build -t miichellecame/devops-web-project:v1 --label devops-web-project-server .'
+                sh 'docker build -t michellecanete/devops-web-project:v1 --label devops-web-project-server .'
             }
         }
         stage('Docker Hub Login') {
@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Push to Docker Hub') {
             steps {
-                sh 'docker push miichellecame/devops-web-project:v1'
+                sh 'docker push michellecanete/devops-web-project:v1'
             }
         }
     }
