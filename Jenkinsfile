@@ -20,11 +20,6 @@ pipeline {
                 sh 'mv target/*.war .'
             }
         }
-        stage('cleanup') {
-            steps {
-                sh 'docker system prune -a --volumes --force --filter "label=devops-web-project-server"'
-            }
-        }
         stage('build image') {
             steps {
                 sh 'docker build -t miichellecanete/devops-web-project:v1 --label devops-web-project-server .'
@@ -32,7 +27,7 @@ pipeline {
         }
         stage('run container') {
             steps {
-                sh 'docker run -d --name devops-web-project-server --label devops-web-project-server -p 8081:8080 miichellecanete/devops-web-project:v1'
+                sh 'docker run -d --name devops-web-project-server --label devops-web-project-server -p 5000:5000 miichellecanete/devops-web-project:v1'
             }
         }
     }
